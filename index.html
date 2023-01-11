@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css"
+</head>
+<body>
+    <div class="form-container">
+        <h2>Library</h2>
+       
+          <div class="field">
+                <label for="title">
+                    <p>Book title</p>
+                       <input type="text" id="title" name="title"/>
+                     
+            </label>
+                     </div>
+
+                     <div class="field">
+                      <label for="name">
+                       <p>Author</p>
+                        <input type="text" id="author" name="author"/>
+                      
+                      </label>
+        </div>
+        
+        <div class="field">
+                  <label for="pages">
+                 <p>No. pages</p>
+                  <input type="text" id="pages" name="pages" />
+                  
+                  </label>
+         </div>
+
+         <div class="field">
+                    <label for="read">
+                    <p>Have you read this book yet?</p>
+        <input type="checkbox" id="read" name="pages">
+               
+                    </label>
+                  </div>
+                  <button onclick="addBookToLib()">Submit</button>
+                     </div>
+
+                     <div class = "lib-display">
+                      <table class="library">
+                        <tr>
+                          <th>Title</th>
+                          <th>Author</th>
+                          <th>No. pages</th>
+                          <th>Status</th>
+                          <th>Remove</th>
+                        </tr>
+                      </table>
+                     </div>
+                  
+</body>
+</html>
