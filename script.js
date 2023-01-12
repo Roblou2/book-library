@@ -36,27 +36,51 @@ function Book (title, name, pages, read) {
     this.name = name,
     this.pages = pages,
     this.read = newRead
-   
+ this.num = 0
     }
     
-
-
+    Book.prototype.setNum = function () {
+      if (table.rows.length === 1) {
+        this.num = 0
+      }
+      else if (table.rows.length > 1) {
+        this.num += 1
+    
+      }
+      }
 //make new book and push to lib
 
   function addBookToLib () {
-    let makeBook = new Book (newTitle, newAuth, newPages)
+    let makeBook = new Book (newTitle, newAuth, newPages, newRead)
+ makeBook.setNum()
 myLib.push(makeBook)
-var row = table.insertRow()
-var cellOne = row.insertCell()
-var cellTwo = row.insertCell()
-var cellThree = row.insertCell()
-var cellFour = row.insertCell()
+row = table.insertRow()
 
-cellOne.innerHTML = makeBook.title
-cellTwo.innerHTML = makeBook.name
-cellThree.innerHTML = makeBook.pages
-cellFour.innerHTML = makeBook.read
+cellOne = row.insertCell()
+cellTwo = row.insertCell()
+cellThree = row.insertCell()
+cellFour = row.insertCell()
+cellFive = row.insertCell()
 
-row.setAttribute('data-index', (myLib.length -1))
+
+
+cellOne.textContent = makeBook.title
+cellTwo.textContent = makeBook.name
+cellThree.textContent = makeBook.pages
+cellFour.textContent = makeBook.read
+cellFive.innerHTML = '<button class="remove" onclick="remove(this)"><span class="mdi mdi-trash-can"></span></button>'
+cellFive.setAttribute('data-index', (myLib.length - 1))
+
+row.setAttribute('data-index', (myLib.length - 1))
+
+
+
   }
 
+
+
+  function remove (trash) {
+
+}
+  
+  
