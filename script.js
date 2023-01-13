@@ -10,20 +10,21 @@ let pages = document.getElementById('pages')
 let read = document.getElementById('read')
 let table = document.querySelector('table.library')
 
+
 let newTitle;
 let newAuth;
 let newPages;
-let newRead;
+let newRead = 'Not read';
 
 title.addEventListener('input', (e) => {  newTitle = e.target.value})
 author.addEventListener('input', (e) => {  newAuth = e.target.value})
 pages.addEventListener('input', (e) => {  newPages = e.target.value})
 read.addEventListener('change', (e) => {
   if (e.target.checked === true) {
-   newRead = true
+   newRead = 'Read'
   }
   else if (e.target.checked === false) {
-    newRead = false
+    newRead = 'Not read'
   }
 
   }
@@ -36,23 +37,15 @@ function Book (title, name, pages, read) {
     this.name = name,
     this.pages = pages,
     this.read = newRead
- this.num = 0
+
     }
     
-    Book.prototype.setNum = function () {
-      if (table.rows.length === 1) {
-        this.num = 0
-      }
-      else if (table.rows.length > 1) {
-        this.num += 1
-    
-      }
-      }
-//make new book and push to lib
+
+//make new book, push to lib and make rows and cells for book data
 
   function addBookToLib () {
-    let makeBook = new Book (newTitle, newAuth, newPages, newRead)
- makeBook.setNum()
+    makeBook = new Book (newTitle, newAuth, newPages, newRead)
+
 myLib.push(makeBook)
 row = table.insertRow()
 
@@ -71,16 +64,18 @@ cellFour.textContent = makeBook.read
 cellFive.innerHTML = '<button class="remove" onclick="remove(this)"><span class="mdi mdi-trash-can"></span></button>'
 cellFive.setAttribute('data-index', (myLib.length - 1))
 
-row.setAttribute('data-index', (myLib.length - 1))
 
 
 
   }
 
 
-
-  function remove (trash) {
+//get the data-index num of the last cell of a row and plug into the library array index. Array length stays the same with undefined.
+  function remove (x) {
+    let index = x.parentNode.dataset.index
+    let rowIndex = x.parentNode.parentNode.rowIndex
+table.deleteRow(rowIndex)
+myLib[index] = undefined
 
 }
-  
   
