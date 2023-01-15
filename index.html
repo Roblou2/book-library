@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="form-container">
-      
+      <div class="form-items">
         <h2>Library<span class="mdi mdi-bookshelf"></span></h2>
        
           <div class="field">
@@ -38,16 +38,19 @@
                   </label>
          </div>
 
-         <div class="field">
+         <div class="field-box">
                     <label for="read">
                     <p>Have you read this book yet?</p>
-        <input type="checkbox" id="read" name="read"/> <p>Yes</p>
-               
-                    </label>
+                </label>
+                <div class="checkbox-flex">
+                <p>Yes</p>  
+                <input type="checkbox" id="read" name="read"/>
+        </div>
                   </div>
+
                   <button onclick="addBookToLib()">Submit</button>
                      </div>
-
+</div>
                      <div class = "lib-display">
                       <table class="library">
                  

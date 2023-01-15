@@ -1,3 +1,29 @@
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+* p {
+    font-size: 25px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+table th {
+font-size: 27px;
+}
+
+table td {
+font-size: 22px;
+text-align: center;
+}
+
+.mdi {
+font-size: 22px;
+}
+
+* h2 {
+    font-size: 35px;
+}
+
 .library {
     border: black solid 1px;
     
@@ -24,12 +50,75 @@ tr:nth-of-type(odd) {
     border-collapse: collapse; 
   }
   
+  .form-items {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+    
+  }
 
-@media screen and (min-width: 700px) {
+  .field {
+    width: 100%;
+    max-width: 300px;
+           }
+    
+ .field input {
+   width: 100%;
+       max-width: 250px;
+  
+       
+           }
+
+   .field-box input {
+    width: 100%;
+    max-width: 25px;
+  
+    
+   }
+
+           .checkbox-flex {
+            display: flex;
+            justify-content: center;
+gap: 20px;
+           }
+
+
+
+           input:focus,
+textarea:focus {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+input {
+ font-size: 1.5rem;
+
+  padding: 0 10px;
+  margin: 0;
+ 
+  background: white;
+}
+
+.form-items button {
+    padding: 5px;
+    font: bold 0.6em sans-serif;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background:  #f9e79f;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+
+@media screen and (min-width: 800px) {
     body {
         flex-flow: column wrap;
      height: 1000px;
      padding: 0;
+     column-gap: 30px;
+    margin: 0;
  
     }
     
@@ -47,17 +136,20 @@ tr:nth-of-type(odd) {
     }
 
     table.library {
-        width: 80%;
-        max-width: 2000px;
-    }
+        width: 100%;
+     
     }
 
-@media screen and (max-width: 699px) {
+
+       
+    }
+
+@media screen and (max-width: 799px) {
 
 body {
  flex-flow: column;
  align-items: center;
- gap: 20px;
+ gap: 30px;
 }
 h2 {
     text-align: center;
