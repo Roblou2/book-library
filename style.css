@@ -24,6 +24,10 @@ font-size: 22px;
     font-size: 35px;
 }
 
+h2 .mdi {
+    font-size: 50px;
+}
+
 .library {
     border: black solid 1px;
     
@@ -61,6 +65,10 @@ tr:nth-of-type(odd) {
   .field {
     width: 100%;
     max-width: 300px;
+           }
+
+           .field p {
+            font-weight: 700;
            }
     
  .field input {

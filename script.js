@@ -16,7 +16,7 @@ let req = document.querySelector('.req')
 let newTitle;
 let newAuth;
 let newPages;
-let newRead = 'Read';
+let newRead;
 
 title.addEventListener('input', (e) => {  newTitle = e.target.value})
 author.addEventListener('input', (e) => {  newAuth = e.target.value})
@@ -42,13 +42,19 @@ function Book (title, name, pages, read) {
 
     }
     
-    Book.prototype.changeStatus = function () {
-      if (makeBook.read === true) {
-        cellFour.innerHTML = '<button class ="status" onclick="changeStatus()"><span class="mdi mdi-cancel"></span></button>'
-      }
-      else if (makeBook.read === false) {
-        cellFour.innerHTML =  '<button class ="status" onclick="changeStatus()"><span class="mdi mdi-check"></span></button>'
-      }
+   function changeStatus (x) {
+    let obj = x.parentNode.parentNode.dataset.index
+   
+ if (myLib[obj].read === true) {
+  myLib[obj].read = false
+  x.parentNode.innerHTML = '<button class ="status" onclick="changeStatus(this)"><span class="mdi mdi-close"></span></button>'
+
+ }
+  else if (myLib[obj].read === false) {
+    myLib[obj].read = true
+    x.parentNode.innerHTML = '<button class ="status" onclick="changeStatus(this)"><span class="mdi mdi-check"></span></button>'
+   
+  }
     }
 
 //make new book, push to lib and make rows and cells for book data
@@ -65,6 +71,10 @@ req.setAttribute('style', 'display: block;')
 return 
 }
 
+//set the display back to none for when input is added
+req.setAttribute('style', 'display: none;')
+
+
 
 cellOne = row.insertCell()
 cellTwo = row.insertCell()
@@ -79,15 +89,15 @@ cellTwo.textContent = makeBook.name
 cellThree.textContent = makeBook.pages
 
 if (makeBook.read === true) {
-cellFour.innerHTML = '<button class ="status" onclick="changeStatus()"><span class="mdi mdi-check"></span></button>'
+cellFour.innerHTML = '<button class ="status" onclick="changeStatus(this)"><span class="mdi mdi-check"></span></button>'
 }
 else if (makeBook.read === false) {
-  cellFour.innerHTML = '<button class ="status" onclick="changeStatus()"><span class="mdi mdi-cancel"></span></button>'
+  cellFour.innerHTML = '<button class ="status" onclick="changeStatus(this)"><span class="mdi mdi-close"></span></button>'
 }
 cellFive.innerHTML = '<button class="remove" onclick="remove(this)"><span class="mdi mdi-trash-can"></span></button>'
 cellFive.setAttribute('data-index', (myLib.length - 1))
 
-
+row.setAttribute('data-index', (myLib.length - 1))
 
 
   }
@@ -102,3 +112,11 @@ myLib[index] = undefined
 
 }
   
+//set default output on library for read checkbox
+if (read.checked === true) {
+  newRead = true
+}
+else if (read.checked === false) {
+newRead = false;
+}
+
