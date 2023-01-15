@@ -9,22 +9,24 @@ let author = document.getElementById('author')
 let pages = document.getElementById('pages')
 let read = document.getElementById('read')
 let table = document.querySelector('table.library')
+let req = document.querySelector('.req')
+
 
 
 let newTitle;
 let newAuth;
 let newPages;
-let newRead = 'Not read';
+let newRead = 'Read';
 
 title.addEventListener('input', (e) => {  newTitle = e.target.value})
 author.addEventListener('input', (e) => {  newAuth = e.target.value})
 pages.addEventListener('input', (e) => {  newPages = e.target.value})
 read.addEventListener('change', (e) => {
   if (e.target.checked === true) {
-   newRead = 'Read'
+   newRead = true
   }
   else if (e.target.checked === false) {
-    newRead = 'Not read'
+    newRead = false
   }
 
   }
@@ -40,6 +42,14 @@ function Book (title, name, pages, read) {
 
     }
     
+    Book.prototype.changeStatus = function () {
+      if (makeBook.read === true) {
+        cellFour.innerHTML = '<button class ="status" onclick="changeStatus()"><span class="mdi mdi-cancel"></span></button>'
+      }
+      else if (makeBook.read === false) {
+        cellFour.innerHTML =  '<button class ="status" onclick="changeStatus()"><span class="mdi mdi-check"></span></button>'
+      }
+    }
 
 //make new book, push to lib and make rows and cells for book data
 
@@ -48,6 +58,13 @@ function Book (title, name, pages, read) {
 
 myLib.push(makeBook)
 row = table.insertRow()
+
+if (title.value.length === 0 || author.value.length === 0 || pages.value.length === 0)  {
+
+req.setAttribute('style', 'display: block;')
+return 
+}
+
 
 cellOne = row.insertCell()
 cellTwo = row.insertCell()
@@ -60,7 +77,13 @@ cellFive = row.insertCell()
 cellOne.textContent = makeBook.title
 cellTwo.textContent = makeBook.name
 cellThree.textContent = makeBook.pages
-cellFour.textContent = makeBook.read
+
+if (makeBook.read === true) {
+cellFour.innerHTML = '<button class ="status" onclick="changeStatus()"><span class="mdi mdi-check"></span></button>'
+}
+else if (makeBook.read === false) {
+  cellFour.innerHTML = '<button class ="status" onclick="changeStatus()"><span class="mdi mdi-cancel"></span></button>'
+}
 cellFive.innerHTML = '<button class="remove" onclick="remove(this)"><span class="mdi mdi-trash-can"></span></button>'
 cellFive.setAttribute('data-index', (myLib.length - 1))
 
