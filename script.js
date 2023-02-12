@@ -34,12 +34,15 @@ read.addEventListener('change', (e) => {
 
 //creates book object
 
-function Book (title, name, pages, read) {
+class Book {
+  
+  constructor (title, name, pages, read) {
+ 
     this.title = title,
     this.name = name,
     this.pages = pages,
     this.read = newRead
-
+  }
     }
     
    function changeStatus (x) {
