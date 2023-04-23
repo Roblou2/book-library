@@ -11,16 +11,37 @@ let read = document.getElementById('read')
 let table = document.querySelector('table.library')
 let req = document.querySelector('.req')
 let form = document.querySelector('form')
-
+let add = document.querySelector('button.add')
 
 let newTitle;
 let newAuth;
 let newPages;
 let newRead;
 
-form.addEventListener('submit', (e) => e.preventDefault())
 
-title.addEventListener('input', (e) => {  newTitle = e.target.value})
+
+title.addEventListener('input', () => {
+  if (title.validity.tooShort) {
+    title.setCustomValidity("The title length is too short")
+   
+  }
+  else {
+    title.setCustomValidity("")
+  }
+})
+
+
+pages.addEventListener('input', () => {
+if (pages.validity.patternMismatch) {
+  pages.setCustomValidity("You must enter only numbers")
+}
+else {
+  pages.setCustomValidity("")
+}
+})
+
+
+title.addEventListener('input', (e) => {  newTitle = e.target.value })
 author.addEventListener('input', (e) => {  newAuth = e.target.value})
 pages.addEventListener('input', (e) => {  newPages = e.target.value})
 read.addEventListener('change', (e) => {
@@ -65,10 +86,12 @@ class Book {
 //make new book, push to lib and make rows and cells for book data
 
   function addBookToLib () {
+
+
     makeBook = new Book (newTitle, newAuth, newPages, newRead)
 
 myLib.push(makeBook)
-console.log(myLib)
+
 row = table.insertRow()
 
 
@@ -120,4 +143,13 @@ if (read.checked === true) {
 else if (read.checked === false) {
 newRead = false;
 }
+
+form.addEventListener('submit', (e) => {
+
+ e.preventDefault()
+
+  addBookToLib()
+ 
+})
+
 
