@@ -10,13 +10,15 @@ let pages = document.getElementById('pages')
 let read = document.getElementById('read')
 let table = document.querySelector('table.library')
 let req = document.querySelector('.req')
-
+let form = document.querySelector('form')
 
 
 let newTitle;
 let newAuth;
 let newPages;
 let newRead;
+
+form.addEventListener('submit', (e) => e.preventDefault())
 
 title.addEventListener('input', (e) => {  newTitle = e.target.value})
 author.addEventListener('input', (e) => {  newAuth = e.target.value})
@@ -66,13 +68,9 @@ class Book {
     makeBook = new Book (newTitle, newAuth, newPages, newRead)
 
 myLib.push(makeBook)
+console.log(myLib)
 row = table.insertRow()
 
-if (title.value.length === 0 || author.value.length === 0 || pages.value.length === 0)  {
-
-req.setAttribute('style', 'display: block;')
-return 
-}
 
 //set the display back to none for when input is added
 req.setAttribute('style', 'display: none;')
