@@ -108,6 +108,10 @@ input {
   background: white;
 }
 
+input:invalid {
+    border: 2px dashed red;
+  }
+
 .form-items button {
     padding: 5px;
     font: bold 0.6em sans-serif;
